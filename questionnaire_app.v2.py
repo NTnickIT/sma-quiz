@@ -131,13 +131,6 @@ with st.form("sma_quiz"):
                     index=None,
                     key=f"q_{i}",
                     horizontal=False,  # ← This is the key change: vertical stacking
-                    captions=[
-                        "Strongly Disagree",
-                        "Disagree",
-                        "Neutral",
-                        "Agree",
-                        "Strongly Agree"
-                    ]  # Optional: shows small text under each radio button
                 )
                 if selected is not None:
                     answers[i] = selected
