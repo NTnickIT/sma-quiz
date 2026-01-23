@@ -99,9 +99,9 @@ archetype_descriptions = {
 # ────────────────────────────────────────────────
 # Streamlit App
 # ────────────────────────────────────────────────
-st.title("Sacred Money Archetypes® Questionnaire (Unofficial Personal Use)")
+st.title("Sacred Money Archetypes® Questionnaire")
 st.markdown("""
-**Instructions:** Rate each statement from 1 to 5.  
+ 
 1 = Strongly Disagree • 2 = Disagree • 3 = Neutral • 4 = Agree • 5 = Strongly Agree  
 """)
 
@@ -127,7 +127,11 @@ with st.form("sma_quiz"):
                 q_num = i + 1
                 selected = st.radio(
                     f"**Q{q_num}**: {questions[i]}",
-                    ["1", "2", "3", "4", "5"],
+                    ["1", 
+                     "2", 
+                     "3", 
+                     "4", 
+                     "5"],
                     format_func=lambda x: f"{x}: {'Strongly Disagree' if x=='1' else 'Disagree' if x=='2' else 'Neutral' if x=='3' else 'Agree' if x=='4' else 'Strongly Agree'}",
                     index=None,
                     key=f"q_{i}",
