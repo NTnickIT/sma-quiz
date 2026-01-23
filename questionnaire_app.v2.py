@@ -71,7 +71,7 @@ questions = [
 ]
 
 # Scoring map: radio returns the number string → convert to int
-scoring_map = {"1": 1, "2": 2, "3": 3, "4": 4, "5": 5}
+scoring_map = {"Strongly Disagree": 1, "Disagree": 2, "Neutral": 3, "Agree": 4, "Strongly Agree": 5}
 
 # Archetype → list of 0-based question indices (matches PDF column pairing)
 archetype_indices = {
