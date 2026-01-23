@@ -127,15 +127,17 @@ with st.form("sma_quiz"):
                 q_num = i + 1
                 selected = st.radio(
                     f"**Q{q_num}**: {questions[i]}",
-                    ["1", 
-                     "2", 
-                     "3", 
-                     "4", 
-                     "5"],
-                    format_func=lambda x: f"{x}: {'Strongly Disagree' if x=='1' else 'Disagree' if x=='2' else 'Neutral' if x=='3' else 'Agree' if x=='4' else 'Strongly Agree'}",
+                    ["1", "2", "3", "4", "5"],
                     index=None,
                     key=f"q_{i}",
-                    horizontal=True
+                    horizontal=False,  # ← This is the key change: vertical stacking
+                    captions=[
+                        "Strongly Disagree",
+                        "Disagree",
+                        "Neutral",
+                        "Agree",
+                        "Strongly Agree"
+                    ]  # Optional: shows small text under each radio button
                 )
                 if selected is not None:
                     answers[i] = selected
