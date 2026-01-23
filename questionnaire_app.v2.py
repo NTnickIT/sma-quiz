@@ -127,7 +127,7 @@ with st.form("sma_quiz"):
                 q_num = i + 1
                 selected = st.radio(
                     f"**Q{q_num}**: {questions[i]}",
-                    ["1", "2", "3", "4", "5"],
+                    ["Strongly Disagree", "Disagree", "Neutral", "Agree", "Strongly Agree"],
                     index=None,
                     key=f"q_{i}",
                     horizontal=False,  # ← This is the key change: vertical stacking
