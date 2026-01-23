@@ -110,37 +110,35 @@ st.info("This is a recreated quiz based on the public Sacred Money Archetypes® 
 with st.form("sma_quiz"):
     answers = [None] * len(questions)
 
-    groups = [
-        ("GROUP 1 (Questions 1–8)", 0, 8),
-        ("GROUP 2 (Questions 9–16)", 8, 16),
-        ("GROUP 3 (Questions 17–24)", 16, 24),
-        ("GROUP 4 (Questions 25–32)", 24, 32),
-        ("GROUP 5 (Questions 33–40)", 32, 40),
-        ("GROUP 6 (Questions 41–48)", 40, 48),
-        ("GROUP 7 (Questions 49–56)", 48, 56),
-        ("GROUP 8 (Questions 57–64)", 56, 64),
-    ]
+    st.markdown("""
+    **Scale (apply to every statement below):**  
+    1 = Strongly Disagree  
+    2 = Disagree  
+    3 = Neutral  
+    4 = Agree  
+    5 = Strongly Agree
+    """)
 
     for group_name, start, end in groups:
         with st.expander(group_name, expanded=(start == 0)):
             for i in range(start, end):
                 q_num = i + 1
-                selected = st.radio(
+                
+                # Use empty labels or subtle dots to mimic PDF circles
+                # Option A: Simple vertical radio with no visible labels
+                selected_index = st.radio(
                     f"**Q{q_num}**: {questions[i]}",
-                    ["1", "2", "3", "4", "5"],
+                    options=[0, 1, 2, 3, 4],           # internal values 0–4
                     index=None,
                     key=f"q_{i}",
-                    horizontal=False,  # ← This is the key change: vertical stacking
-                    captions=[
-                        "Strongly Disagree",
-                        "Disagree",
-                        "Neutral",
-                        "Agree",
-                        "Strongly Agree"
-                    ]  # Optional: shows small text under each radio button
+                    horizontal=False,
+                    label_visibility="collapsed",      # hides the radio label if needed
+                    format_func=lambda x: ""           # ← empty string: no text shown next to circles
                 )
-                if selected is not None:
-                    answers[i] = selected
+                
+                # Map 0→1, 1→2, ..., 4→5
+                if selected_index is not None:
+                    answers[i] = str(selected_index + 1)  # store as string "1" to "5"
 
     submitted = st.form_submit_button("Calculate My Archetypes", type="primary")
 
