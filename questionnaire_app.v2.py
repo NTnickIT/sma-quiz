@@ -114,42 +114,35 @@ archetype_descriptions = {
 def generate_results_pdf(ranked, max_per_archetype=40):
     pdf = FPDF()
     pdf.add_page()
-
+    
     pdf.set_font("Helvetica", "B", 16)
     pdf.cell(0, 10, "Sacred Money Archetypes® Results", ln=True, align="C")
     pdf.ln(10)
-
+    
     pdf.set_font("Helvetica", size=12)
-    pdf.multi_cell(0, 8, "Your ranked archetypes (highest to lowest). Each is scored out of 40 based on 8 questions.")
+    pdf.multi_cell(0, 8, "Your ranked archetypes (highest to lowest). Each scored out of 40 (8 questions × 5 max).")
     pdf.ln(5)
-
-    pdf.set_font("Helvetica", "B", 12)
-    pdf.cell(30, 10, "Rank", border=1)
-    pdf.cell(50, 10, "Archetype", border=1)
-    pdf.cell(30, 10, "Score", border=1)
-    pdf.cell(30, 10, "%", border=1)
-    pdf.cell(0, 10, "Description", border=1)
+    
+    # Narrower columns for more description space
+    pdf.set_font("Helvetica", "B", 11)
+    pdf.cell(20, 12, "Rank", border=1)
+    pdf.cell(40, 12, "Archetype", border=1)
+    pdf.cell(25, 12, "Score", border=1)
+    pdf.cell(25, 12, "%", border=1)
+    pdf.cell(0, 12, "Description", border=1)
     pdf.ln()
-
-    pdf.set_font("Helvetica", size=11)
+    
+    pdf.set_font("Helvetica", size=10)  # smaller font helps wrapping
     for rank, (arch, score) in enumerate(ranked, 1):
         perc = (score / max_per_archetype) * 100
-        desc = archetype_descriptions[arch]
-        pdf.cell(30, 10, str(rank), border=1)
-        pdf.cell(50, 10, arch, border=1)
-        pdf.cell(30, 10, f"{score}/40", border=1)
-        pdf.cell(30, 10, f"{perc:.1f}%", border=1)
-        pdf.multi_cell(0, 10, desc, border=1)
-
-    pdf.ln(10)
-    pdf.set_font("Helvetica", "I", 10)
-    pdf.multi_cell(0, 6,
-                   "Unofficial recreation. Official assessments: sacredmoneyarchetypes.com © Heart of Success, Inc.")
-
-    pdf_output = io.BytesIO()
-    pdf.output(pdf_output)
-    pdf_output.seek(0)
-    return pdf_output
+        # Truncate aggressively if needed
+        desc = archetype_descriptions[arch][:140] + "..." if len(archetype_descriptions[arch]) > 140 else archetype_descriptions[arch]
+        
+        pdf.cell(20, 12, str(rank), border=1)
+        pdf.cell(40, 12, arch, border=1)
+        pdf.cell(25, 12, f"{score}/40", border=1)
+        pdf.cell(25, 12, f"{perc:.1f}%", border=1)
+        pdf.multi_cell(0, 12, desc, border=1)  # taller cell = better wrapping
 
 
 # ────────────────────────────────────────────────
