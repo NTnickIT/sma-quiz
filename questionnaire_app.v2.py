@@ -97,14 +97,14 @@ archetype_indices = {
 }
 
 archetype_descriptions = {
-    "Nurturer": "Generous, caring giver who finds joy in supporting others financially and emotionally. Can overgive or enable dependency.",
-    "Maverick": "Clever risk-taker who enjoys financial games, deals and independence. May take big risks or manipulate situations.",
-    "Alchemist": "Visionary who attracts/transforms money in unconventional ways for impact and change. Can undervalue money or be inconsistent.",
-    "Celebrity": "Charismatic spotlight lover who spends on image, luxury and visibility. Can overspend to maintain status.",
-    "Connector": "Relationship-focused; trusts flow and service over accumulation. May avoid money details or become dependent.",
-    "Accumulator": "Disciplined saver who feels secure with frugality and planning. Can limit experiences due to fear of spending.",
-    "Romantic": "Pleasure-oriented; lives for the moment and immediate enjoyment. Can be impulsive and neglect long-term saving.",
-    "Ruler": "Ambitious empire-builder who sees money as power and success. Can become workaholic or controlling."
+    "Nurturer": "Generous, caring giver who finds joy in supporting others financially and emotionally.",
+    "Maverick": "Clever risk-taker who enjoys financial games, deals and independence.",
+    "Alchemist": "Visionary who attracts/transforms money in unconventional ways for impact and change.",
+    "Celebrity": "Charismatic spotlight lover who spends on image, luxury and visibility.",
+    "Connector": "Relationship-focused; trusts flow and service over accumulation.",
+    "Accumulator": "Disciplined saver who feels secure with frugality and planning.",
+    "Romantic": "Pleasure-oriented; lives for the moment and immediate enjoyment.",
+    "Ruler": "Ambitious empire-builder who sees money as power and success."
 }
 
 # ────────────────────────────────────────────────
