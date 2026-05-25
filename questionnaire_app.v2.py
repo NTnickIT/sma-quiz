@@ -111,8 +111,8 @@ archetype_descriptions = {
 # Email Results Function
 # ────────────────────────────────────────────────
 def send_results_email(to_email, ranked):
-    from_email = st.secrets.get("SMTP_EMAIL", "your.email@gmail.com")
-    password = st.secrets.get("SMTP_PASSWORD", "your-app-password-here")
+    from_email = st.secrets.get("SMTP_EMAIL", "etmoneycoach@gmail.com")
+    password = st.secrets.get("SMTP_PASSWORD", "")
 
     msg = MIMEMultipart()
     msg['From'] = from_email
